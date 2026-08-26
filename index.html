@@ -1,1 +1,1106 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Արման & Անգելինա | 10.10.2027</title>
+
+  <meta name="description"
+        content="Արման և Անգելինայի հարսանեկան հրավիրատոմսը — 10 հոկտեմբերի 2027">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+  <style>
+
+    :root {
+      --cream: #f8f4ed;
+      --ivory: #fffdf8;
+      --beige: #e8ddd0;
+      --taupe: #b8a89a;
+      --brown: #65584e;
+      --dark: #3d3631;
+      --gold: #b59a72;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: "Montserrat", sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+    }
+
+    section {
+      padding: 100px 22px;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          rgba(47, 39, 32, .25),
+          rgba(47, 39, 32, .38)
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Surp%20Hovhannes%20Church%20of%20Artashat%20by%20ArmAg%20%281%29.jpg")
+        center / cover no-repeat;
+
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      padding: 30px;
+      animation: fadeUp 1.6s ease;
+    }
+
+    .small-title {
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      opacity: .95;
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: .9;
+      margin-bottom: 30px;
+    }
+
+    .ampersand {
+      color: #ead9bc;
+      font-style: italic;
+    }
+
+    .date {
+      font-size: 17px;
+      letter-spacing: 5px;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .scroll {
+      margin-top: 60px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      opacity: .8;
+    }
+
+    /* ---------- INTRO ---------- */
+
+    .intro {
+      background: var(--ivory);
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: clamp(42px, 6vw, 65px);
+      color: var(--brown);
+      margin-bottom: 30px;
+    }
+
+    .intro-text {
+      max-width: 720px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      color: #655b53;
+    }
+
+    .flourish {
+      color: var(--gold);
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    /* ---------- TIMELINE ---------- */
+
+    .timeline-section {
+      background: #eee7de;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 55px;
+      color: var(--brown);
+      margin-bottom: 65px;
+    }
+
+    .timeline {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 35px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(101,88,78,.18);
+      align-items: center;
+    }
+
+    .time {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      color: var(--gold);
+      text-align: center;
+    }
+
+    .event h3 {
+      font-size: 30px;
+      margin-bottom: 3px;
+      color: var(--brown);
+    }
+
+    .event p {
+      font-size: 14px;
+      color: #776c64;
+    }
+
+    /* ---------- LOCATION CARDS ---------- */
+
+    .locations {
+      background: var(--ivory);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 15px 45px rgba(65,53,42,.08);
+      transition: .4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 55px rgba(65,53,42,.13);
+    }
+
+    .card img {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 30px;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 32px;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #776c64;
+    }
+
+    .map-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 11px 24px;
+      border: 1px solid var(--gold);
+      color: var(--brown);
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    .map-button:hover {
+      background: var(--gold);
+      color: white;
+    }
+
+    /* ---------- COUNTDOWN ---------- */
+
+    .countdown-section {
+      background:
+        linear-gradient(rgba(75,63,53,.58), rgba(75,63,53,.65)),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=85")
+        center / cover fixed;
+      color: white;
+      text-align: center;
+    }
+
+    .countdown-section .section-title {
+      color: white;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .counter-box {
+      width: 130px;
+      padding: 20px 10px;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    .counter-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 55px;
+      line-height: 1;
+    }
+
+    .counter-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    /* ---------- DRESS CODE ---------- */
+
+    .dress-code {
+      background: #e9dfd4;
+      text-align: center;
+    }
+
+    .dress-code h2 {
+      font-size: 55px;
+      color: var(--brown);
+      margin-bottom: 25px;
+    }
+
+    .dress-code p {
+      max-width: 680px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+      color: #62584f;
+    }
+
+    .white-heart {
+      margin-top: 25px;
+      font-size: 35px;
+    }
+
+    /* ---------- CHILDREN ---------- */
+
+    .children {
+      background: var(--ivory);
+      text-align: center;
+    }
+
+    .children h2 {
+      font-size: 52px;
+      color: var(--brown);
+      margin-bottom: 25px;
+    }
+
+    .children p {
+      max-width: 760px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+      color: #655b53;
+    }
+
+    /* ---------- SECRET PHOTOS ---------- */
+
+    .photos {
+      background:
+        linear-gradient(rgba(53,45,38,.53), rgba(53,45,38,.53)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85")
+        center / cover;
+      color: white;
+      text-align: center;
+    }
+
+    .photos h2 {
+      font-size: 55px;
+      margin-bottom: 25px;
+    }
+
+    .photos p {
+      max-width: 720px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 25px;
+    }
+
+    .hashtag {
+      margin-top: 30px;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: #ead9bc;
+    }
+
+    /* ---------- RSVP ---------- */
+
+    .rsvp {
+      background: #eee7de;
+      text-align: center;
+    }
+
+    .rsvp h2 {
+      font-size: 55px;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+
+    .rsvp p {
+      max-width: 650px;
+      margin: auto auto 35px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 24px;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      background: var(--brown);
+      color: white;
+      text-decoration: none;
+      padding: 15px 35px;
+      border-radius: 35px;
+      letter-spacing: 1px;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .rsvp-button:hover {
+      background: var(--gold);
+    }
+
+    /* ---------- MUSIC ---------- */
+
+    .music-button {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1000;
+
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,.6);
+      background: rgba(82,69,58,.85);
+      color: white;
+
+      cursor: pointer;
+      font-size: 21px;
+
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+      padding: 75px 20px;
+      background: #3e3732;
+      color: white;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-size: 65px;
+      color: #ead9bc;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      opacity: .85;
+    }
+
+    /* ---------- ANIMATION ---------- */
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- MOBILE ---------- */
+
+    @media(max-width: 700px) {
+
+      section {
+        padding: 75px 18px;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+      }
+
+      .hero-subtitle {
+        font-size: 20px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .event {
+        grid-template-columns: 85px 1fr;
+        gap: 15px;
+      }
+
+      .time {
+        font-size: 25px;
+      }
+
+      .event h3 {
+        font-size: 25px;
+      }
+
+      .section-title,
+      .dress-code h2,
+      .children h2,
+      .photos h2,
+      .rsvp h2 {
+        font-size: 45px;
+      }
+
+      .intro-text,
+      .dress-code p,
+      .children p,
+      .photos p,
+      .rsvp p {
+        font-size: 21px;
+      }
+
+      .counter-box {
+        width: 100px;
+      }
+
+      .counter-number {
+        font-size: 43px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="small-title">
+      Մեր ամենագեղեցիկ օրը
+    </div>
+
+    <h1>
+      Արման
+      <span class="ampersand">&</span>
+      Անգելինա
+    </h1>
+
+    <div class="date">
+      10 · 10 · 2027
+    </div>
+
+    <div class="hero-subtitle">
+      Սիրով հրավիրում ենք Ձեզ կիսելու մեր երջանկությունը
+    </div>
+
+    <div class="scroll">
+      ↓ Բացեք մեր պատմությունը ↓
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INTRO -->
+
+<section class="intro">
+
+  <div class="container reveal">
+
+    <div class="flourish">✦</div>
+
+    <h2>Մի օր, որ ուզում ենք հիշել ամբողջ կյանքում</h2>
+
+    <p class="intro-text">
+      Սերը երբեմն գալիս է աննկատ,
+      բայց մի օր դառնում է այն ամենը,
+      ինչի մասին երազել ես։
+
+      Մենք գտել ենք միմյանց,
+      իսկ հիմա ցանկանում ենք այդ գեղեցիկ
+      պատմության ամենակարևոր օրը
+      կիսել մեր ամենասիրելի մարդկանց հետ։
+
+      <br><br>
+
+      Արման և Անգելինա
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="timeline-section">
+
+  <div class="container reveal">
+
+    <h2 class="section-title">
+      Մեր օրվա ընթացքը
+    </h2>
+
+    <div class="timeline">
+
+      <div class="event">
+        <div class="time">11:00</div>
+
+        <div>
+          <h3>Փեսայի տուն</h3>
+          <p>Օրվա առաջին գեղեցիկ պահերը</p>
+        </div>
+      </div>
+
+
+      <div class="event">
+        <div class="time">12:00</div>
+
+        <div>
+          <h3>Հարսի տուն</h3>
+          <p>Այն պահը, երբ ամեն ինչ սկսում է իրականանալ</p>
+        </div>
+      </div>
+
+
+      <div class="event">
+        <div class="time">13:30</div>
+
+        <div>
+          <h3>Պսակադրություն</h3>
+          <p>Սուրբ Հովհաննես եկեղեցի · Արտաշատ</p>
+        </div>
+      </div>
+
+
+      <div class="event">
+        <div class="time">17:00</div>
+
+        <div>
+          <h3>Տոնական երեկո</h3>
+          <p>Վահագն Hall · Այգավան, Արարատի մարզ</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LOCATIONS -->
+
+<section class="locations">
+
+  <div class="container reveal">
+
+    <h2 class="section-title">
+      Մեր հանդիպման վայրերը
+    </h2>
+
+    <div class="cards">
+
+
+      <!-- CHURCH -->
+
+      <div class="card">
+
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Surp%20Hovhannes%20Church%20of%20Artashat%20by%20ArmAg%20%285%29.jpg"
+          alt="Սուրբ Հովհաննես եկեղեցի, Արտաշատ"
+        >
+
+        <div class="card-body">
+
+          <h3>Սուրբ Հովհաննես</h3>
+
+          <p>
+            Արտաշատի Սուրբ Հովհաննես եկեղեցի
+            <br>
+            Պսակադրություն՝ 13:30
+          </p>
+
+          <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=Սուրբ+Հովհաննես+եկեղեցի+Արտաշատ"
+            target="_blank"
+          >
+            Բացել քարտեզը
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- RESTAURANT -->
+
+      <div class="card">
+
+        <img
+          src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=85"
+          alt="Հարսանեկան երեկո"
+        >
+
+        <div class="card-body">
+
+          <h3>Վահագն Hall</h3>
+
+          <p>
+            Վահագն Hall ռեստորանային համալիր
+            <br>
+            Այգավան գյուղ, Արարատի մարզ
+            <br>
+            Սկիզբ՝ 17:00
+          </p>
+
+          <a
+            class="map-button"
+            href="https://www.google.com/maps/search/?api=1&query=Vahagn+Hall+Ayqavan+Ararat+Armenia"
+            target="_blank"
+          >
+            Բացել քարտեզը
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="countdown-section">
+
+  <div class="container reveal">
+
+    <h2 class="section-title">
+      Մինչև մեր օրը
+    </h2>
+
+    <div class="countdown">
+
+      <div class="counter-box">
+        <div class="counter-number" id="days">0</div>
+        <div class="counter-label">օր</div>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter-number" id="hours">0</div>
+        <div class="counter-label">ժամ</div>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter-number" id="minutes">0</div>
+        <div class="counter-label">րոպե</div>
+      </div>
+
+      <div class="counter-box">
+        <div class="counter-number" id="seconds">0</div>
+        <div class="counter-label">վայրկյան</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- DRESS CODE -->
+
+<section class="dress-code">
+
+  <div class="container reveal">
+
+    <div class="flourish">✦</div>
+
+    <h2>Մի փոքրիկ խնդրանք</h2>
+
+    <p>
+
+      Այդ օրը թող ամեն ինչ լինի այնքան գեղեցիկ,
+      որքան մեր սիրո օրը։
+
+      <br><br>
+
+      Գույների հատուկ սահմանափակում չունենք․
+      պարզապես սպիտակը այդ օրը սիրով թողնենք
+      մեր հարսիկին։
+
+      🤍
+
+      <br><br>
+
+      Իսկ մնացածը թող լինի Ձեր սիրելի,
+      ամենագեղեցիկ կերպարով։
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CHILDREN -->
+
+<section class="children">
+
+  <div class="container reveal">
+
+    <div class="flourish">♡</div>
+
+    <h2>Մի փոքրիկ խնդրանք մեր փոքրիկ հյուրերին</h2>
+
+    <p>
+
+      Մենք անչափ սիրում ենք մեր փոքրիկներին
+      և շատ ուրախ ենք, որ նրանք լինելու են
+      մեր օրվա մի մասը։
+
+      <br><br>
+
+      Միայն մի փոքրիկ խնդրանք ունենք․
+      մեր կարևոր պահերին օգնենք նրանց
+      մի փոքրիկ դադար վերցնել վազվզելուց,
+      որպեսզի այդ թանկարժեք կադրերում
+      մեր փոքրիկ հրաշքները պատահաբար
+      չդառնան գլխավոր դերակատարները։ 🤍
+
+      <br><br>
+
+      Խոստանում ենք՝ նրանց համար էլ
+      այդ օրը լիքը ուրախություն ու սեր է լինելու։
+
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- SECRET PHOTOS -->
+
+<section class="photos">
+
+  <div class="container reveal">
+
+    <div class="flourish">📷</div>
+
+    <h2>Դարձեք մեր գաղտնի լուսանկարիչները</h2>
+
+    <p>
+
+      Մենք ուզում ենք ոչ միայն տեսնել այդ օրը,
+      այլ նաև զգալ այն Ձեր աչքերով։
+
+      <br><br>
+
+      Ուստի մի փոքրիկ առաքելություն ունենք Ձեզ համար․
+      մեզ թաքուն լուսանկարեք։
+      Սեղանի մոտ, պարելիս, ծիծաղելիս,
+      երբ մենք չենք նկատում։
+
+      <br><br>
+
+      Կիսվեք մեզ հետ Ձեր ամենասիրելի կադրերով,
+      որովհետև երբեմն ամենաթանկ լուսանկարները
+      նրանք են, որոնց մասին մենք նույնիսկ չգիտենք։
+
+      <br><br>
+
+      Եկեք միասին հավաքենք մեր օրվա
+      փոքրիկ, անկեղծ ու չկրկնվող պահերը։
+
+    </p>
+
+    <div class="hashtag">
+      #ArmanAndAngelina
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section class="rsvp">
+
+  <div class="container reveal">
+
+    <div class="flourish">✦</div>
+
+    <h2>Կլինե՞ք մեզ հետ</h2>
+
+    <p>
+
+      Ձեր ներկայությունը մեզ համար
+      ամենագեղեցիկ նվերներից մեկն է։
+
+      <br>
+
+      Խնդրում ենք հաստատել Ձեր մասնակցությունը,
+      որպեսզի այդ օրը Ձեզ սպասենք
+      մեր սրտերում ու մեր սեղանի շուրջ։
+
+    </p>
+
+    <!-- Փոխիր այս հղումը քո Google Form-ի հղումով -->
+
+    <a
+      class="rsvp-button"
+      href="https://forms.google.com/"
+      target="_blank"
+    >
+      Հաստատել մասնակցությունը
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h2>Արման & Անգելինա</h2>
+
+  <p>
+    10 · 10 · 2027
+  </p>
+
+  <br>
+
+  <p>
+    Սիրով սպասում ենք Ձեզ 🤍
+  </p>
+
+</footer>
+
+
+<!-- MUSIC BUTTON -->
+
+<button
+  class="music-button"
+  id="musicButton"
+  onclick="openMusic()"
+  aria-label="Միացնել երաժշտությունը"
+>
+  ♪
+</button>
+
+
+<script>
+
+  /* ==============================
+     COUNTDOWN
+  ============================== */
+
+  const weddingDate =
+    new Date("October 10, 2027 00:00:00").getTime();
+
+
+  function updateCountdown() {
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+
+    if (distance < 0) {
+
+      document.getElementById("days").innerText = "♥";
+      document.getElementById("hours").innerText = "♥";
+      document.getElementById("minutes").innerText = "♥";
+      document.getElementById("seconds").innerText = "♥";
+
+      return;
+
+    }
+
+
+    const days =
+      Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+      Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+      );
+
+    const minutes =
+      Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+      );
+
+    const seconds =
+      Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+      );
+
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+  }
+
+
+  updateCountdown();
+
+  setInterval(updateCountdown, 1000);
+
+
+
+  /* ==============================
+     SCROLL ANIMATIONS
+  ============================== */
+
+  const reveals =
+    document.querySelectorAll(".reveal");
+
+
+  const observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("active");
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.15
+      }
+    );
+
+
+  reveals.forEach(
+    element => observer.observe(element)
+  );
+
+
+
+  /* ==============================
+     MUSIC
+     
+     Opens official Ed Sheeran
+     "Shape of You" YouTube video.
+  ============================== */
+
+  function openMusic() {
+
+    window.open(
+      "https://www.youtube.com/watch?v=xTvyyoF_LZY",
+      "_blank"
+    );
+
+  }
+
+</script>
+
+</body>
+</html>
