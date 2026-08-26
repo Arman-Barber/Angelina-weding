@@ -4,21 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Արման & Անգելինա | 10.10.2027</title>
+<title>Arman & Angelina — 10.10.2027</title>
 
 <meta name="description"
-content="Արման և Անգելինայի հարսանեկան հրավիրատոմսը — 10.10.2027">
+content="Arman & Angelina — Wedding Invitation — 10.10.2027">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
+/* =========================================================
+   LUXURY WEDDING INVITATION
+   ARMAN & ANGELINA
+========================================================= */
+
+:root{
+    --ivory:#f5f1e9;
+    --paper:#faf8f3;
+    --cream:#e9e0d2;
+    --champagne:#c7aa7b;
+    --champagne-light:#e4d1b1;
+    --espresso:#29231f;
+    --brown:#51463d;
+    --olive:#555b4c;
+    --line:rgba(81,70,61,.22);
+    --white:#fffefa;
+}
 
 *{
     margin:0;
@@ -31,14 +45,18 @@ html{
 }
 
 body{
-    background:#f8f5ef;
-    color:#4c443d;
-    font-family:'Montserrat',sans-serif;
+    background:var(--ivory);
+    color:var(--espresso);
+    font-family:'DM Sans',sans-serif;
     font-weight:300;
     overflow-x:hidden;
 }
 
-h1,h2,h3,h4{
+body.locked{
+    overflow:hidden;
+}
+
+h1,h2,h3{
     font-family:'Cormorant Garamond',serif;
     font-weight:400;
 }
@@ -48,263 +66,238 @@ button{
 }
 
 img{
-    max-width:100%;
+    width:100%;
     display:block;
 }
 
-
-/* =====================================================
-   COLORS
-===================================================== */
-
-:root{
-    --cream:#f8f5ef;
-    --ivory:#fffdf9;
-    --beige:#e9ded1;
-    --sand:#d7c5b3;
-    --brown:#66584e;
-    --dark:#3d3631;
-    --gold:#b69a73;
-    --rose:#d8c0b5;
+::selection{
+    background:var(--champagne);
+    color:white;
 }
 
 
-/* =====================================================
-   OPENING SCREEN
-===================================================== */
+/* =========================================================
+   GRAIN
+========================================================= */
 
-#opening{
+body::before{
+    content:"";
     position:fixed;
     inset:0;
-    z-index:9999;
+    pointer-events:none;
+    z-index:9000;
+    opacity:.035;
+
+    background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================================
+   OPENING
+========================================================= */
+
+#introScreen{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.06),
+            transparent 45%
+        ),
+        #29231f;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    background:
-        linear-gradient(
-            rgba(67,57,49,.25),
-            rgba(67,57,49,.35)
-        ),
-        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=90")
-        center/cover;
-
     transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+        opacity 1.4s cubic-bezier(.77,0,.18,1),
+        visibility 1.4s;
 }
 
-#opening.hide{
+#introScreen.closed{
     opacity:0;
     visibility:hidden;
     pointer-events:none;
 }
 
-.envelope-wrapper{
+.intro-inner{
+    width:min(90%,700px);
     text-align:center;
-    color:white;
+    color:var(--paper);
 }
 
-.envelope{
-    width:280px;
-    height:190px;
-    position:relative;
-    margin:0 auto 40px;
-    cursor:pointer;
-    perspective:1000px;
-}
+.intro-monogram{
+    width:100px;
+    height:100px;
 
-.envelope-back{
-    position:absolute;
-    inset:0;
-    background:#eee4d9;
-    border-radius:5px;
-    box-shadow:0 25px 70px rgba(0,0,0,.25);
-}
+    margin:0 auto 42px;
 
-.envelope-front{
-    position:absolute;
-    bottom:0;
-    left:0;
-
-    width:0;
-    height:0;
-
-    border-left:140px solid transparent;
-    border-right:140px solid transparent;
-    border-bottom:100px solid #dfd0c1;
-
-    z-index:3;
-}
-
-.envelope-flap{
-    position:absolute;
-    top:0;
-    left:0;
-
-    width:0;
-    height:0;
-
-    border-left:140px solid transparent;
-    border-right:140px solid transparent;
-    border-top:105px solid #cbb8a6;
-
-    transform-origin:top;
-    transition:1s ease;
-
-    z-index:4;
-}
-
-.envelope.open .envelope-flap{
-    transform:rotateX(180deg);
-}
-
-.envelope-letter{
-    position:absolute;
-
-    width:230px;
-    height:150px;
-
-    background:#fffdf8;
-
-    left:25px;
-    bottom:15px;
-
-    z-index:2;
+    border:1px solid rgba(228,209,177,.6);
+    border-radius:50%;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:#66584e;
+    position:relative;
 
-    transition:1.2s ease;
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+
+    color:var(--champagne-light);
+
+    animation:
+        monogramIn 2s ease forwards;
 }
 
-.envelope.open .envelope-letter{
-    transform:translateY(-115px);
+.intro-monogram::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid rgba(228,209,177,.22);
+    border-radius:50%;
 }
 
-.letter-text{
-    text-align:center;
-}
-
-.letter-text small{
-    letter-spacing:4px;
+.intro-kicker{
     font-size:9px;
+    letter-spacing:7px;
+    text-transform:uppercase;
+    color:#cbbda8;
+    margin-bottom:20px;
 }
 
-.letter-text strong{
-    display:block;
+.intro-title{
     font-family:'Cormorant Garamond',serif;
-    font-size:30px;
-    font-weight:400;
+    font-size:clamp(54px,9vw,100px);
+    line-height:.82;
+    font-weight:300;
+    margin-bottom:25px;
 }
 
-.open-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:30px;
-    margin-bottom:10px;
+.intro-date{
+    font-size:10px;
+    letter-spacing:6px;
+    color:#d7c8b2;
 }
 
-.open-subtitle{
-    font-size:11px;
-    letter-spacing:3px;
-    opacity:.85;
-}
+.enter{
+    margin-top:50px;
 
-.open-button{
-    margin-top:25px;
-    border:1px solid rgba(255,255,255,.7);
-    background:rgba(255,255,255,.08);
-    color:white;
+    background:none;
+    border:none;
 
-    padding:13px 28px;
+    color:#e7d9c3;
 
-    border-radius:30px;
+    font-size:9px;
+    letter-spacing:4px;
+
+    padding:15px 25px;
 
     cursor:pointer;
 
-    font-size:11px;
-    letter-spacing:2px;
-
-    backdrop-filter:blur(5px);
-
-    transition:.3s;
+    position:relative;
 }
 
-.open-button:hover{
-    background:white;
-    color:#66584e;
+.enter::after{
+    content:"";
+    position:absolute;
+    left:25px;
+    right:25px;
+    bottom:7px;
+    height:1px;
+    background:#c7aa7b;
+
+    transform:scaleX(.3);
+    transition:.5s ease;
+}
+
+.enter:hover::after{
+    transform:scaleX(1);
+}
+
+@keyframes monogramIn{
+    from{
+        opacity:0;
+        transform:scale(.7) rotate(-10deg);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
 }
 
 
-/* =====================================================
-   GENERAL
-===================================================== */
+/* =========================================================
+   COMMON
+========================================================= */
 
 section{
-    padding:110px 22px;
+    position:relative;
 }
 
 .container{
-    max-width:1050px;
+    width:min(1160px,90%);
     margin:auto;
+}
+
+.kicker{
+    font-size:9px;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    color:var(--champagne);
+}
+
+.title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(55px,8vw,105px);
+    font-weight:300;
+    line-height:.86;
+}
+
+.line{
+    width:70px;
+    height:1px;
+    background:var(--champagne);
+    margin:30px 0;
 }
 
 .center{
     text-align:center;
 }
 
-.kicker{
-    font-size:10px;
-    letter-spacing:5px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:18px;
-}
-
-.section-title{
-    font-size:62px;
-    line-height:1;
-    color:var(--brown);
-    margin-bottom:25px;
-}
-
-.text{
-    font-family:'Cormorant Garamond',serif;
-    font-size:25px;
-    line-height:1.65;
-    max-width:760px;
-    margin:auto;
-}
-
-.divider{
-    width:65px;
-    height:1px;
-    background:var(--gold);
-    margin:30px auto;
+.center .line{
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
-    transition:1.2s ease;
+    transform:translateY(50px);
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s cubic-bezier(.2,.8,.2,1);
 }
 
-.reveal.visible{
+.reveal.show{
     opacity:1;
-    transform:translateY(0);
+    transform:none;
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero{
-    min-height:100vh;
+    height:100svh;
+    min-height:700px;
+
+    color:white;
 
     display:flex;
     align-items:center;
@@ -312,562 +305,826 @@ section{
 
     text-align:center;
 
-    color:white;
+    overflow:hidden;
 
     background:
         linear-gradient(
-            rgba(53,45,39,.25),
-            rgba(53,45,39,.48)
+            rgba(25,21,18,.20),
+            rgba(25,21,18,.50)
         ),
-        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=90")
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2400&q=95")
         center/cover;
+}
 
-    position:relative;
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 60%,
+            rgba(25,21,18,.45)
+        );
 }
 
 .hero-content{
-    animation:heroIn 2s ease;
+    position:relative;
+    z-index:2;
+
+    animation:
+        heroReveal 2s cubic-bezier(.2,.8,.2,1);
 }
 
-.hero-small{
-    font-size:11px;
-    letter-spacing:6px;
+.hero-eyebrow{
+    font-size:9px;
+    letter-spacing:8px;
     text-transform:uppercase;
-    margin-bottom:30px;
+    margin-bottom:38px;
+    opacity:.9;
 }
 
-.hero h1{
-    font-size:clamp(75px,12vw,150px);
-    line-height:.75;
-    margin-bottom:35px;
+.hero-names{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(82px,14vw,175px);
+    line-height:.68;
+    font-weight:300;
 }
 
-.hero h1 span{
-    color:#ead7c1;
+.hero-names .amp{
+    display:block;
+
+    font-size:.46em;
+    line-height:1.25;
+
+    color:#e2cba7;
     font-style:italic;
 }
 
 .hero-date{
-    font-size:15px;
-    letter-spacing:8px;
+    margin-top:42px;
+
+    font-size:10px;
+    letter-spacing:9px;
 }
 
 .hero-bottom{
     position:absolute;
-    bottom:30px;
+    z-index:3;
+
+    bottom:35px;
     left:50%;
     transform:translateX(-50%);
 
-    font-size:9px;
+    font-size:8px;
     letter-spacing:4px;
-    opacity:.8;
+
+    opacity:.75;
 }
 
-@keyframes heroIn{
+.hero-bottom span{
+    display:block;
+    margin-top:12px;
+    font-size:17px;
+    animation:down 1.8s infinite;
+}
+
+@keyframes heroReveal{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(35px);
     }
     to{
         opacity:1;
+        transform:none;
+    }
+}
+
+@keyframes down{
+    0%,100%{
         transform:translateY(0);
+    }
+    50%{
+        transform:translateY(7px);
     }
 }
 
 
-/* =====================================================
-   STORY
-===================================================== */
+/* =========================================================
+   INTRODUCTION
+========================================================= */
 
-.story{
-    background:var(--ivory);
+.introduction{
+    background:var(--paper);
+    padding:170px 0;
 }
 
-.story-heart{
-    font-size:30px;
-    color:var(--gold);
-    margin-bottom:20px;
+.intro-copy{
+    width:min(800px,90%);
+    margin:auto;
+    text-align:center;
 }
 
-.story h2{
-    font-size:60px;
+.intro-copy .title{
     color:var(--brown);
+    margin-top:25px;
+}
+
+.intro-copy p{
+    max-width:680px;
+    margin:45px auto 0;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:27px;
+    line-height:1.65;
+
+    color:#655b52;
 }
 
 .signature{
-    margin-top:30px;
+    margin-top:45px;
+
     font-family:'Cormorant Garamond',serif;
-    font-size:32px;
+    font-size:35px;
+
     color:var(--brown);
 }
 
 
-/* =====================================================
-   COUNTDOWN
-===================================================== */
+/* =========================================================
+   IMAGE BREAK
+========================================================= */
 
-.countdown-section{
+.image-break{
+    height:75vh;
+    min-height:500px;
+
     background:
         linear-gradient(
-            rgba(64,54,47,.60),
-            rgba(64,54,47,.65)
+            rgba(35,30,26,.15),
+            rgba(35,30,26,.25)
         ),
-        url("https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=2200&q=90")
-        center/cover;
-
-    background-attachment:fixed;
-
-    color:white;
-    text-align:center;
-}
-
-.countdown-section .section-title{
-    color:white;
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
-    margin-top:50px;
-}
-
-.count-box{
-    width:135px;
-    height:135px;
-
-    border:1px solid rgba(255,255,255,.4);
-    border-radius:50%;
+        url("https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=2400&q=95")
+        center/cover fixed;
 
     display:flex;
-    flex-direction:column;
     align-items:center;
     justify-content:center;
 
-    backdrop-filter:blur(5px);
+    color:white;
+    text-align:center;
 }
 
-.count-number{
+.image-break-text{
     font-family:'Cormorant Garamond',serif;
-    font-size:52px;
-    line-height:1;
-}
-
-.count-label{
-    font-size:9px;
-    letter-spacing:3px;
-    margin-top:10px;
-    opacity:.8;
+    font-size:clamp(45px,7vw,90px);
+    line-height:.9;
+    max-width:850px;
 }
 
 
-/* =====================================================
+/* =========================================================
    TIMELINE
-===================================================== */
+========================================================= */
 
 .timeline-section{
-    background:#eee7de;
+    background:var(--ivory);
+    padding:160px 0;
+}
+
+.timeline-header{
+    text-align:center;
+    margin-bottom:100px;
 }
 
 .timeline{
-    max-width:800px;
-    margin:60px auto 0;
+    width:min(900px,90%);
+    margin:auto;
 }
 
-.timeline-item{
+.event{
     display:grid;
-    grid-template-columns:130px 1fr;
-    gap:35px;
+    grid-template-columns:180px 1fr;
 
-    padding:30px 0;
+    min-height:150px;
 
-    border-bottom:1px solid rgba(90,75,65,.16);
+    position:relative;
 }
 
-.timeline-time{
+.event::before{
+    content:"";
+    position:absolute;
+
+    left:89px;
+    top:0;
+    bottom:0;
+
+    width:1px;
+
+    background:var(--line);
+}
+
+.event:last-child::before{
+    bottom:75px;
+}
+
+.event-time{
     font-family:'Cormorant Garamond',serif;
-    color:var(--gold);
-    font-size:36px;
-    text-align:center;
+    font-size:38px;
+    color:var(--champagne);
+
+    position:relative;
+    z-index:2;
+
+    background:var(--ivory);
+
+    height:max-content;
 }
 
-.timeline-content h3{
-    font-size:32px;
+.event-content{
+    padding:0 0 65px 70px;
+}
+
+.event-content h3{
+    font-size:40px;
     color:var(--brown);
+    margin-bottom:8px;
 }
 
-.timeline-content p{
-    font-size:13px;
-    color:#796e65;
+.event-content p{
+    font-size:12px;
+    line-height:1.8;
+    color:#7c7067;
+}
+
+.event-dot{
+    position:absolute;
+
+    left:83px;
+    top:8px;
+
+    width:13px;
+    height:13px;
+
+    border-radius:50%;
+
+    background:var(--ivory);
+    border:1px solid var(--champagne);
+
+    z-index:3;
 }
 
 
-/* =====================================================
+/* =========================================================
    LOCATIONS
-===================================================== */
+========================================================= */
 
 .locations{
-    background:var(--ivory);
+    background:#302a26;
+    color:white;
+    padding:150px 0;
+}
+
+.locations .title{
+    color:#f6f1e8;
 }
 
 .location-grid{
+    margin-top:90px;
+
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:30px;
-    margin-top:55px;
+    gap:2px;
 }
 
-.location-card{
-    background:white;
-    border-radius:20px;
+.location{
+    min-height:650px;
+
+    position:relative;
     overflow:hidden;
 
-    box-shadow:
-        0 20px 60px rgba(73,59,48,.09);
-
-    transition:.5s ease;
+    display:flex;
+    align-items:flex-end;
 }
 
-.location-card:hover{
-    transform:translateY(-8px);
-}
+.location img{
+    position:absolute;
+    inset:0;
 
-.location-card img{
     width:100%;
-    height:330px;
+    height:100%;
+
     object-fit:cover;
+
+    transition:
+        transform 1.4s cubic-bezier(.2,.8,.2,1);
 }
 
-.location-info{
-    padding:35px;
-    text-align:center;
+.location:hover img{
+    transform:scale(1.06);
 }
 
-.location-info h3{
-    font-size:37px;
-    color:var(--brown);
-    margin-bottom:10px;
-}
-
-.location-info p{
-    font-size:13px;
-    color:#756b63;
-    line-height:1.8;
-}
-
-.map-btn{
-    display:inline-block;
-
-    margin-top:22px;
-
-    padding:12px 25px;
-
-    border:1px solid var(--gold);
-    border-radius:30px;
-
-    color:var(--brown);
-    text-decoration:none;
-
-    font-size:10px;
-    letter-spacing:2px;
-
-    transition:.3s;
-}
-
-.map-btn:hover{
-    background:var(--gold);
-    color:white;
-}
-
-
-/* =====================================================
-   DRESS CODE
-===================================================== */
-
-.dress{
-    background:#e9dfd4;
-    text-align:center;
-}
-
-.dress-symbol{
-    font-size:35px;
-    margin-bottom:20px;
-}
-
-.dress h2{
-    font-size:60px;
-}
-
-.dress p{
-    max-width:720px;
-    margin:30px auto 0;
-
-    font-family:'Cormorant Garamond',serif;
-    font-size:25px;
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   CHILDREN
-===================================================== */
-
-.children{
-    background:var(--ivory);
-    text-align:center;
-}
-
-.children h2{
-    font-size:58px;
-}
-
-.children p{
-    max-width:760px;
-    margin:30px auto;
-
-    font-family:'Cormorant Garamond',serif;
-    font-size:25px;
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   SECRET PHOTOS
-===================================================== */
-
-.secret{
-    color:white;
-    text-align:center;
+.location::after{
+    content:"";
+    position:absolute;
+    inset:0;
 
     background:
         linear-gradient(
-            rgba(50,42,36,.65),
-            rgba(50,42,36,.65)
-        ),
-        url("https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=2200&q=90")
-        center/cover;
+            to top,
+            rgba(20,17,15,.85),
+            rgba(20,17,15,.05) 65%
+        );
 }
 
-.secret h2{
+.location-info{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    padding:50px;
+}
+
+.location-number{
+    color:#d8c29f;
+    font-size:9px;
+    letter-spacing:5px;
+    margin-bottom:15px;
+}
+
+.location h3{
+    font-size:55px;
     color:white;
-    font-size:62px;
+    line-height:.9;
+}
+
+.location p{
+    margin-top:15px;
+
+    font-size:11px;
+    line-height:1.8;
+
+    color:#ddd4c9;
+}
+
+.map{
+    display:inline-block;
+
+    margin-top:25px;
+
+    color:white;
+    text-decoration:none;
+
+    font-size:9px;
+    letter-spacing:3px;
+
+    border-bottom:1px solid var(--champagne);
+
+    padding-bottom:7px;
+}
+
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
+.countdown-section{
+    padding:150px 0;
+    background:var(--cream);
+}
+
+.countdown{
+    margin-top:70px;
+
+    display:flex;
+    justify-content:center;
+
+    gap:clamp(35px,7vw,100px);
+}
+
+.counter{
+    text-align:center;
+}
+
+.counter-number{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(55px,7vw,90px);
+    font-weight:300;
+    color:var(--brown);
+    line-height:.8;
+}
+
+.counter-label{
+    margin-top:20px;
+
+    font-size:8px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+
+    color:#8c7d6d;
+}
+
+
+/* =========================================================
+   DRESS CODE
+========================================================= */
+
+.dress{
+    padding:170px 0;
+    background:var(--paper);
+}
+
+.dress-inner{
+    width:min(800px,90%);
+    margin:auto;
+    text-align:center;
+}
+
+.dress-mark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    color:var(--champagne);
+}
+
+.dress h2{
+    font-size:75px;
+    color:var(--brown);
+    line-height:.85;
+    margin-top:15px;
+}
+
+.dress p{
+    max-width:650px;
+
+    margin:45px auto 0;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    line-height:1.7;
+
+    color:#655b52;
+}
+
+.dress strong{
+    color:var(--brown);
+    font-weight:500;
+}
+
+
+/* =========================================================
+   CHILDREN
+========================================================= */
+
+.children{
+    background:#dfe1d6;
+    padding:150px 0;
+}
+
+.children-inner{
+    width:min(850px,90%);
+    margin:auto;
+    text-align:center;
+}
+
+.children .title{
+    color:#4e5548;
+}
+
+.children p{
+    max-width:700px;
+
+    margin:45px auto 0;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:26px;
+    line-height:1.7;
+
+    color:#505448;
+}
+
+
+/* =========================================================
+   SECRET MISSION
+========================================================= */
+
+.secret{
+    min-height:80vh;
+
+    display:flex;
+    align-items:center;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            rgba(32,28,25,.70),
+            rgba(32,28,25,.72)
+        ),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2400&q=95")
+        center/cover fixed;
+}
+
+.secret-inner{
+    width:min(850px,90%);
+    margin:auto;
+    text-align:center;
+}
+
+.secret .title{
+    color:white;
 }
 
 .secret p{
-    max-width:750px;
-    margin:30px auto;
+    max-width:720px;
+    margin:45px auto 0;
 
     font-family:'Cormorant Garamond',serif;
-    font-size:25px;
+    font-size:27px;
     line-height:1.7;
+
+    color:#eee6dc;
 }
 
-.hashtag{
-    margin-top:30px;
-    font-size:12px;
+.secret-key{
+    margin-top:45px;
+
+    display:inline-block;
+
+    border:1px solid rgba(228,209,177,.6);
+
+    padding:14px 25px;
+
+    font-size:9px;
     letter-spacing:4px;
-    color:#ead7c1;
+
+    color:#ead7b7;
 }
 
 
-/* =====================================================
+/* =========================================================
    GALLERY
-===================================================== */
+========================================================= */
 
 .gallery{
-    background:#f3ede5;
+    background:var(--paper);
+    padding:150px 0;
+}
+
+.gallery-heading{
+    width:min(700px,90%);
+    margin:0 auto 80px;
+    text-align:center;
 }
 
 .gallery-grid{
-    margin-top:50px;
+    width:min(1200px,94%);
+    margin:auto;
 
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-auto-rows:260px;
 
-    gap:14px;
+    grid-template-columns:
+        1fr
+        1.25fr
+        .8fr
+        1fr;
+
+    grid-template-rows:
+        300px
+        230px
+        330px;
+
+    gap:12px;
 }
 
 .gallery-item{
     overflow:hidden;
-    border-radius:12px;
+    position:relative;
 }
 
 .gallery-item img{
     width:100%;
     height:100%;
     object-fit:cover;
-    transition:1s ease;
+
+    transition:1.2s ease;
 }
 
 .gallery-item:hover img{
-    transform:scale(1.07);
+    transform:scale(1.06);
 }
 
-.gallery-item:nth-child(2){
-    grid-row:span 2;
+.g1{
+    grid-column:1;
+    grid-row:1 / span 2;
 }
 
-.gallery-item:nth-child(4){
-    grid-column:span 2;
+.g2{
+    grid-column:2;
+    grid-row:1;
+}
+
+.g3{
+    grid-column:3 / span 2;
+    grid-row:1;
+}
+
+.g4{
+    grid-column:2;
+    grid-row:2;
+}
+
+.g5{
+    grid-column:3;
+    grid-row:2 / span 2;
+}
+
+.g6{
+    grid-column:1 / span 2;
+    grid-row:3;
 }
 
 
-/* =====================================================
+/* =========================================================
    RSVP
-===================================================== */
+========================================================= */
 
 .rsvp{
-    background:var(--ivory);
+    background:#2e2925;
+    color:white;
+    padding:170px 0;
     text-align:center;
 }
 
-.rsvp h2{
-    font-size:65px;
+.rsvp .title{
+    color:#f8f2e8;
 }
 
 .rsvp p{
-    max-width:650px;
-    margin:25px auto 35px;
+    max-width:620px;
+    margin:40px auto;
 
     font-family:'Cormorant Garamond',serif;
-    font-size:25px;
+    font-size:26px;
+    line-height:1.7;
+
+    color:#ded5ca;
 }
 
 .rsvp-button{
     display:inline-block;
 
-    padding:16px 35px;
-
-    background:var(--brown);
-    color:white;
+    color:#29231f;
+    background:#dfc9a8;
 
     text-decoration:none;
 
-    border-radius:35px;
+    padding:17px 35px;
 
-    font-size:10px;
-    letter-spacing:3px;
+    font-size:9px;
+    letter-spacing:4px;
 
-    transition:.3s;
+    transition:.4s;
 }
 
 .rsvp-button:hover{
-    background:var(--gold);
+    background:#fffaf1;
+    transform:translateY(-3px);
 }
 
 
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 footer{
-    background:#403833;
+    background:#211d1a;
     color:white;
 
-    text-align:center;
+    padding:120px 20px;
 
-    padding:100px 20px;
+    text-align:center;
+}
+
+.footer-monogram{
+    width:90px;
+    height:90px;
+
+    border:1px solid rgba(228,209,177,.5);
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:0 auto 35px;
+
+    font-family:'Cormorant Garamond',serif;
+    font-size:29px;
+
+    color:#dfc8a4;
 }
 
 footer h2{
-    font-size:75px;
-    color:#ead7c1;
+    font-size:70px;
+    color:#eee5d8;
 }
 
 footer p{
-    font-family:'Cormorant Garamond',serif;
-    font-size:24px;
-    margin-top:15px;
-}
+    margin-top:20px;
 
-.footer-date{
-    font-size:11px;
+    font-size:9px;
     letter-spacing:5px;
-    opacity:.75;
+
+    color:#aa9b8a;
 }
 
 
-/* =====================================================
-   MUSIC BUTTON
-===================================================== */
+/* =========================================================
+   MUSIC
+========================================================= */
 
-.music-button{
+.music{
     position:fixed;
 
-    right:22px;
-    bottom:22px;
+    right:25px;
+    bottom:25px;
+
+    z-index:8000;
 
     width:58px;
     height:58px;
 
     border-radius:50%;
 
-    border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.45);
 
-    background:rgba(70,59,51,.88);
+    background:rgba(44,37,32,.88);
 
-    color:white;
-
-    z-index:5000;
+    color:#ead7b7;
 
     cursor:pointer;
 
-    font-size:20px;
+    backdrop-filter:blur(10px);
 
-    box-shadow:0 10px 35px rgba(0,0,0,.25);
+    font-size:19px;
 
-    transition:.3s;
+    transition:.4s;
 }
 
-.music-button:hover{
+.music:hover{
     transform:scale(1.08);
 }
 
-.music-button.playing{
-    animation:pulse 1.5s infinite;
+.music.active{
+    animation:musicPulse 1.7s infinite;
 }
 
-@keyframes pulse{
+@keyframes musicPulse{
+
     0%,100%{
-        box-shadow:0 0 0 0 rgba(182,154,115,.45);
+        box-shadow:
+        0 0 0 0 rgba(199,170,123,.45);
     }
+
     50%{
-        box-shadow:0 0 0 15px rgba(182,154,115,0);
+        box-shadow:
+        0 0 0 13px rgba(199,170,123,0);
     }
+
 }
 
 
-/* =====================================================
+/* =========================================================
    MOBILE
-===================================================== */
+========================================================= */
 
 @media(max-width:700px){
 
-    section{
-        padding:80px 18px;
+    .hero{
+        min-height:100svh;
     }
 
-    .hero h1{
-        font-size:68px;
+    .hero-names{
+        font-size:72px;
     }
 
     .hero-date{
-        font-size:12px;
         letter-spacing:5px;
     }
 
-    .section-title,
-    .story h2,
-    .dress h2,
-    .children h2,
-    .secret h2,
-    .rsvp h2{
-        font-size:45px;
+    .introduction,
+    .timeline-section,
+    .locations,
+    .countdown-section,
+    .dress,
+    .children,
+    .gallery,
+    .rsvp{
+        padding:100px 0;
     }
 
-    .text,
+    .intro-copy p,
     .dress p,
     .children p,
     .secret p,
@@ -875,102 +1132,153 @@ footer p{
         font-size:21px;
     }
 
+    .timeline{
+        width:90%;
+    }
+
+    .event{
+        grid-template-columns:75px 1fr;
+    }
+
+    .event::before{
+        left:37px;
+    }
+
+    .event-dot{
+        left:31px;
+    }
+
+    .event-content{
+        padding-left:40px;
+        padding-bottom:55px;
+    }
+
+    .event-time{
+        font-size:28px;
+    }
+
+    .event-content h3{
+        font-size:31px;
+    }
+
     .location-grid{
         grid-template-columns:1fr;
     }
 
-    .location-card img{
-        height:270px;
+    .location{
+        min-height:500px;
     }
 
-    .timeline-item{
-        grid-template-columns:80px 1fr;
-        gap:15px;
+    .location-info{
+        padding:30px;
     }
 
-    .timeline-time{
-        font-size:27px;
+    .location h3{
+        font-size:44px;
     }
 
-    .timeline-content h3{
-        font-size:27px;
+    .countdown{
+        gap:30px;
     }
 
-    .count-box{
-        width:105px;
-        height:105px;
-    }
-
-    .count-number{
-        font-size:40px;
-    }
-
-    .gallery-grid{
-        grid-template-columns:1fr 1fr;
-        grid-auto-rows:180px;
-    }
-
-    .gallery-item:nth-child(2){
-        grid-row:span 2;
-    }
-
-    .gallery-item:nth-child(4){
-        grid-column:span 2;
-    }
-
-    footer h2{
+    .counter-number{
         font-size:55px;
     }
 
-    .envelope{
-        transform:scale(.85);
+    .counter-label{
+        font-size:7px;
+        letter-spacing:2px;
     }
+
+    .dress h2{
+        font-size:55px;
+    }
+
+    .gallery-grid{
+        display:grid;
+
+        grid-template-columns:1fr 1fr;
+
+        grid-template-rows:
+            240px
+            180px
+            240px
+            180px;
+    }
+
+    .g1{
+        grid-column:1;
+        grid-row:1 / span 2;
+    }
+
+    .g2{
+        grid-column:2;
+        grid-row:1;
+    }
+
+    .g3{
+        grid-column:2;
+        grid-row:2;
+    }
+
+    .g4{
+        grid-column:1;
+        grid-row:3;
+    }
+
+    .g5{
+        grid-column:2;
+        grid-row:3 / span 2;
+    }
+
+    .g6{
+        grid-column:1;
+        grid-row:4;
+    }
+
+    footer h2{
+        font-size:52px;
+    }
+
 }
 
 </style>
 </head>
 
 
-<body>
+<body class="locked">
 
 
-<!-- =====================================================
-     OPENING
-===================================================== -->
+<!-- =========================================================
+     OPENING SCREEN
+========================================================= -->
 
-<div id="opening">
+<div id="introScreen">
 
-    <div class="envelope-wrapper">
+    <div class="intro-inner">
 
-        <div class="envelope" id="envelope">
-
-            <div class="envelope-back"></div>
-
-            <div class="envelope-letter">
-
-                <div class="letter-text">
-                    <small>WEDDING INVITATION</small>
-                    <strong>Արման & Անգելինա</strong>
-                </div>
-
-            </div>
-
-            <div class="envelope-front"></div>
-
-            <div class="envelope-flap"></div>
-
+        <div class="intro-monogram">
+            A&nbsp; A
         </div>
 
-        <div class="open-title">
-            Մեր ամենագեղեցիկ օրը
+        <div class="intro-kicker">
+            A WEDDING INVITATION
         </div>
 
-        <div class="open-subtitle">
+        <div class="intro-title">
+            Arman<br>
+            <i>&</i> Angelina
+        </div>
+
+        <div class="intro-date">
             10 · 10 · 2027
         </div>
 
-        <button class="open-button" onclick="openInvitation()">
-            ԲԱՑԵԼ ՀՐԱՎԵՐԸ
+        <button
+            class="enter"
+            onclick="enterInvitation()"
+        >
+            OPEN INVITATION
         </button>
 
     </div>
@@ -979,23 +1287,29 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="hero-small">
-            Մեր սիրո ամենագեղեցիկ օրը
+        <div class="hero-eyebrow">
+            WITH LOVE & GRATITUDE
         </div>
 
-        <h1>
-            Արման
-            <span>&</span>
-            Անգելինա
-        </h1>
+        <div class="hero-names">
+
+            Arman
+
+            <span class="amp">
+                &
+            </span>
+
+            Angelina
+
+        </div>
 
         <div class="hero-date">
             10 · 10 · 2027
@@ -1004,51 +1318,51 @@ footer p{
     </div>
 
     <div class="hero-bottom">
-        SCROLL TO DISCOVER
+        DISCOVER OUR DAY
+        <span>↓</span>
     </div>
 
 </section>
 
 
 
-<!-- =====================================================
-     STORY
-===================================================== -->
+<!-- =========================================================
+     INTRODUCTION
+========================================================= -->
 
-<section class="story">
+<section class="introduction">
 
-    <div class="container center reveal">
-
-        <div class="story-heart">
-            ♡
-        </div>
+    <div class="intro-copy reveal">
 
         <div class="kicker">
             THE BEGINNING OF FOREVER
         </div>
 
-        <h2>
-            Մի օր, որ ուզում ենք<br>
-            հիշել ամբողջ կյանքում
+        <h2 class="title">
+            Երկու սիրտ.<br>
+            Մեկ պատմություն։
         </h2>
 
-        <div class="divider"></div>
+        <div class="line"></div>
 
-        <p class="text">
+        <p>
 
-            Սերը երբեմն գալիս է շատ հանգիստ՝
-            առանց նախազգուշացնելու,
-            ու մի օր հասկանում ես,
-            որ գտել ես այն մարդուն,
-            ում կողքին ուզում ես ապրել
-            բոլոր հաջորդ օրերը։
+            Կյանքում կան պահեր,
+            որոնք պարզապես տեղի չեն ունենում․
+            դրանք դառնում են հիշողություններ,
+            որոնց վերադառնում ես ամբողջ կյանքում։
 
             <br><br>
 
             Մենք գտել ենք միմյանց,
-            իսկ հիմա ուզում ենք մեր սիրո
-            ամենակարևոր օրը կիսել
-            մեր ամենասիրելի մարդկանց հետ։
+            գտել ենք մեր «մենք»-ը,
+            և հիմա պատրաստվում ենք գրել
+            մեր պատմության ամենագեղեցիկ էջը։
+
+            <br><br>
+
+            Ուզում ենք այդ էջը սկսել
+            հենց Ձեզ հետ։
 
         </p>
 
@@ -1062,45 +1376,16 @@ footer p{
 
 
 
-<!-- =====================================================
-     COUNTDOWN
-===================================================== -->
+<!-- =========================================================
+     IMAGE BREAK
+========================================================= -->
 
-<section class="countdown-section">
+<section class="image-break">
 
-    <div class="container reveal">
+    <div class="image-break-text reveal">
 
-        <div class="kicker" style="color:#ead7c1">
-            COUNTING THE DAYS
-        </div>
-
-        <h2 class="section-title">
-            Մինչև մեր օրը
-        </h2>
-
-        <div class="countdown">
-
-            <div class="count-box">
-                <div class="count-number" id="days">0</div>
-                <div class="count-label">օր</div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="hours">0</div>
-                <div class="count-label">ժամ</div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="minutes">0</div>
-                <div class="count-label">րոպե</div>
-            </div>
-
-            <div class="count-box">
-                <div class="count-number" id="seconds">0</div>
-                <div class="count-label">վայրկյան</div>
-            </div>
-
-        </div>
+        «Եվ նրանք ընտրեցին
+        միմյանց՝ ամեն օր»։
 
     </div>
 
@@ -1108,49 +1393,50 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      TIMELINE
-===================================================== -->
+========================================================= -->
 
 <section class="timeline-section">
 
-    <div class="container reveal">
+    <div class="container">
 
-        <div class="center">
+        <div class="timeline-header reveal">
 
             <div class="kicker">
-                OUR WEDDING DAY
+                SAVE THE MOMENTS
             </div>
 
-            <h2 class="section-title">
-                Օրվա ընթացքը
+            <h2 class="title">
+                Մեր օրը
             </h2>
 
-            <p class="text">
-                Մի օր՝ լի սիրով, ժպիտներով,
-                ընտանեկան ջերմությամբ
-                ու անմոռանալի պահերով։
-            </p>
+            <div class="line"></div>
 
         </div>
 
 
         <div class="timeline">
 
-            <div class="timeline-item">
 
-                <div class="timeline-time">
+            <div class="event reveal">
+
+                <div class="event-dot"></div>
+
+                <div class="event-time">
                     11:00
                 </div>
 
-                <div class="timeline-content">
+                <div class="event-content">
 
                     <h3>
                         Փեսայի տուն
                     </h3>
 
                     <p>
-                        Օրվա առաջին գեղեցիկ պահերը
+                        Օրվա առաջին ժպիտները,
+                        ընտանիքի ջերմությունն
+                        ու սպասման ամենագեղեցիկ պահերը։
                     </p>
 
                 </div>
@@ -1158,21 +1444,24 @@ footer p{
             </div>
 
 
-            <div class="timeline-item">
+            <div class="event reveal">
 
-                <div class="timeline-time">
+                <div class="event-dot"></div>
+
+                <div class="event-time">
                     12:00
                 </div>
 
-                <div class="timeline-content">
+                <div class="event-content">
 
                     <h3>
                         Հարսի տուն
                     </h3>
 
                     <p>
-                        Այն պահը, երբ մեր օրը
-                        սկսում է իրականանալ
+                        Այն տունը, որտեղից
+                        մեր օրը մի փոքր ավելի
+                        հեքիաթային է դառնալու։
                     </p>
 
                 </div>
@@ -1180,20 +1469,23 @@ footer p{
             </div>
 
 
-            <div class="timeline-item">
+            <div class="event reveal">
 
-                <div class="timeline-time">
+                <div class="event-dot"></div>
+
+                <div class="event-time">
                     13:30
                 </div>
 
-                <div class="timeline-content">
+                <div class="event-content">
 
                     <h3>
                         Պսակադրություն
                     </h3>
 
                     <p>
-                        Սուրբ Հովհաննես եկեղեցի · Արտաշատ
+                        Արտաշատի Սուրբ Հովհաննես եկեղեցի։
+                        Մեր «այո»-ի ամենասուրբ պահը։
                     </p>
 
                 </div>
@@ -1201,13 +1493,15 @@ footer p{
             </div>
 
 
-            <div class="timeline-item">
+            <div class="event reveal">
 
-                <div class="timeline-time">
+                <div class="event-dot"></div>
+
+                <div class="event-time">
                     17:00
                 </div>
 
-                <div class="timeline-content">
+                <div class="event-content">
 
                     <h3>
                         Տոնական երեկո
@@ -1215,7 +1509,8 @@ footer p{
 
                     <p>
                         Վահագն Hall · Այգավան,
-                        Արարատի մարզ
+                        Արարատի մարզ։
+                        Սիրո, երաժշտության ու պարերի երեկո։
                     </p>
 
                 </div>
@@ -1230,22 +1525,22 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      LOCATIONS
-===================================================== -->
+========================================================= -->
 
 <section class="locations">
 
-    <div class="container reveal">
+    <div class="container">
 
-        <div class="center">
+        <div class="center reveal">
 
             <div class="kicker">
-                WHERE TO MEET US
+                THE PLACES
             </div>
 
-            <h2 class="section-title">
-                Մեր հանդիպման վայրերը
+            <h2 class="title">
+                Հանդիպենք այնտեղ
             </h2>
 
         </div>
@@ -1256,83 +1551,159 @@ footer p{
 
             <!-- CHURCH -->
 
-            <div class="location-card">
+            <article class="location reveal">
 
                 <img
                     src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Surp%20Hovhannes%20Church%20of%20Artashat%20by%20ArmAg%20%281%29.jpg"
-                    alt="Սուրբ Հովհաննես եկեղեցի"
+                    alt="Սուրբ Հովհաննես եկեղեցի, Արտաշատ"
                 >
 
                 <div class="location-info">
+
+                    <div class="location-number">
+                        01 · CEREMONY
+                    </div>
 
                     <h3>
                         Սուրբ Հովհաննես
                     </h3>
 
                     <p>
-
                         Արտաշատի Սուրբ Հովհաննես եկեղեցի
-
                         <br>
-
-                        Պսակադրություն՝ 13:30
-
+                        13:30
                     </p>
 
                     <a
-                        class="map-btn"
+                        class="map"
                         href="https://www.google.com/maps/search/?api=1&query=Սուրբ+Հովհաննես+եկեղեցի+Արտաշատ"
                         target="_blank"
                     >
-                        ԲԱՑԵԼ ՔԱՐՏԵԶԸ
+                        OPEN MAP →
                     </a>
 
                 </div>
 
-            </div>
+            </article>
 
 
             <!-- VENUE -->
 
-            <div class="location-card">
+            <article class="location reveal">
 
                 <img
-                    src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=90"
-                    alt="Հարսանեկան տոնական սրահ"
+                    src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1600&q=95"
+                    alt="Wedding reception"
                 >
 
                 <div class="location-info">
+
+                    <div class="location-number">
+                        02 · RECEPTION
+                    </div>
 
                     <h3>
                         Վահագն Hall
                     </h3>
 
                     <p>
-
-                        Վահագն Hall
-                        ռեստորանային համալիր
-
-                        <br>
-
                         Այգավան գյուղ,
                         Արարատի մարզ
-
                         <br>
-
-                        Սկիզբ՝ 17:00
-
+                        17:00
                     </p>
 
                     <a
-                        class="map-btn"
+                        class="map"
                         href="https://www.google.com/maps/search/?api=1&query=Vahagn+Hall+Ayqavan+Ararat+Armenia"
                         target="_blank"
                     >
-                        ԲԱՑԵԼ ՔԱՐՏԵԶԸ
+                        OPEN MAP →
                     </a>
 
                 </div>
 
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     COUNTDOWN
+========================================================= -->
+
+<section class="countdown-section">
+
+    <div class="container center reveal">
+
+        <div class="kicker">
+            UNTIL WE SAY I DO
+        </div>
+
+        <h2 class="title">
+            Մինչև մեր օրը
+        </h2>
+
+        <div class="countdown">
+
+            <div class="counter">
+                <div
+                    class="counter-number"
+                    id="days"
+                >
+                    000
+                </div>
+
+                <div class="counter-label">
+                    Days
+                </div>
+            </div>
+
+
+            <div class="counter">
+                <div
+                    class="counter-number"
+                    id="hours"
+                >
+                    00
+                </div>
+
+                <div class="counter-label">
+                    Hours
+                </div>
+            </div>
+
+
+            <div class="counter">
+                <div
+                    class="counter-number"
+                    id="minutes"
+                >
+                    00
+                </div>
+
+                <div class="counter-label">
+                    Minutes
+                </div>
+            </div>
+
+
+            <div class="counter">
+                <div
+                    class="counter-number"
+                    id="seconds"
+                >
+                    00
+                </div>
+
+                <div class="counter-label">
+                    Seconds
+                </div>
             </div>
 
         </div>
@@ -1343,50 +1714,53 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      DRESS CODE
-===================================================== -->
+========================================================= -->
 
 <section class="dress">
 
-    <div class="container reveal">
+    <div class="dress-inner reveal">
 
-        <div class="dress-symbol">
-            ♡
+        <div class="dress-mark">
+            ◊
         </div>
 
         <div class="kicker">
-            A LITTLE NOTE
+            THE DRESS CODE
         </div>
 
         <h2>
-            Ձեր ամենագեղեցիկ կերպարով
+            Come beautifully.
         </h2>
 
-        <div class="divider"></div>
+        <div class="line"></div>
 
         <p>
 
-            Մենք ուզում ենք, որ այդ օրը
-            Ձեզ այնքան գեղեցիկ ու հարմարավետ
-            զգաք, որքան հնարավոր է։
+            Մենք չենք ուզում սահմանափակել
+            Ձեր ոճը։
 
             <br><br>
 
-            Հատուկ գույների սահմանափակում չունենք,
-            պարզապես մի փոքրիկ խնդրանք ունենք․
+            Եկեք հենց այն կերպարով,
+            որի մեջ Ձեզ ամենագեղեցիկն
+            ու ամենավստահն եք զգում։
 
             <br><br>
 
+            Միայն մեկ փոքրիկ պայման՝
             <strong>
-                սպիտակը այդ օրը սիրով թողնենք
-                մեր հարսիկին։ 🤍
+                սպիտակը այդ օրը թողնենք
+                մեր հարսիկին։
             </strong>
 
+            🤍
+
             <br><br>
 
-            Մնացածը թող լինի Ձեր սիրելի
-            ու ամենագեղեցիկ կերպարը։
+            Մնացածը թող լինի Ձեր գեղեցիկ
+            անհատականությունը։
 
         </p>
 
@@ -1396,46 +1770,45 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      CHILDREN
-===================================================== -->
+========================================================= -->
 
 <section class="children">
 
-    <div class="container reveal">
+    <div class="children-inner reveal">
 
         <div class="kicker">
             OUR LITTLE GUESTS
         </div>
 
-        <h2>
+        <h2 class="title">
             Մի փոքրիկ խնդրանք
         </h2>
 
-        <div class="divider"></div>
+        <div class="line"></div>
 
         <p>
 
-            Մենք անչափ սիրում ենք մեր փոքրիկներին
-            և շատ ուրախ ենք, որ նրանք լինելու են
-            մեր օրվա մի մասը։
+            Մեր փոքրիկ հյուրերին մենք շատ ենք սիրում
+            և անչափ ուրախ ենք նրանց ներկայությամբ։
 
             <br><br>
 
-            Միայն մի փոքրիկ խնդրանք ունենք․
-            մեր ամենակարևոր պահերին օգնենք նրանց
-            մի փոքր դադար վերցնել իրենց
-            անվերջանալի արկածներից,
-            որպեսզի մեր հարսանիքի կարևոր կադրերում
-            փոքրիկ հրաշքները պատահաբար
-            չվազեն հենց տեսախցիկի առաջ։
+            Միայն խնդրում ենք՝ մեր ամենակարևոր
+            րոպեներին նրանց մի փոքրիկ «պաուզա»
+            տանք իրենց վազվզոցից։
 
             <br><br>
 
-            Ոչ մի խստություն, միայն մի փոքրիկ
-            համագործակցություն՝ հանուն այն կադրերի,
-            որոնք մենք ամբողջ կյանքում
-            սիրով ենք նայելու։ 🤍
+            Ոչ թե որովհետև նրանք չպետք է ուրախանան,
+            այլ որովհետև ուզում ենք մեր կյանքի
+            այդ թանկարժեք կադրերում պահել
+            հենց այն պահը, որը տեղի է ունենում։
+
+            <br><br>
+
+            Իսկ հետո՝ թող խաղերը շարունակվեն։ 🤍
 
         </p>
 
@@ -1445,61 +1818,65 @@ footer p{
 
 
 
-<!-- =====================================================
-     SECRET PHOTOGRAPHERS
-===================================================== -->
+<!-- =========================================================
+     SECRET PHOTOGRAPHER
+========================================================= -->
 
 <section class="secret">
 
-    <div class="container reveal">
+    <div class="secret-inner reveal">
 
-        <div class="kicker" style="color:#ead7c1">
-            YOUR SECRET MISSION
+        <div class="kicker" style="color:#d8bf99">
+            SECRET MISSION · 001
         </div>
 
-        <h2>
-            Դարձեք մեր գաղտնի լուսանկարիչները
+        <h2 class="title">
+            Դարձեք մեր<br>
+            գաղտնի լուսանկարիչները։
         </h2>
 
-        <div class="divider"></div>
+        <div class="line" style="margin-left:auto;margin-right:auto;"></div>
 
         <p>
 
-            Այդ օրը մենք ունենալու ենք
-            լուսանկարիչներ։
+            Այդ օրը մենք կունենանք
+            պրոֆեսիոնալ լուսանկարիչներ։
 
             <br><br>
 
-            Բայց ուզում ենք ունենալ նաև
-            մի ուրիշ տեսանկյուն՝
+            Բայց նրանք չեն կարող լինել
+            ամեն տեղ։
 
-            <strong>
-                Ձերը։
-            </strong>
+            <br><br>
+
+            Դրա համար Ձեզ տալիս ենք
+            մի փոքրիկ գաղտնի առաքելություն։
 
             <br><br>
 
             Մեզ թաքուն լուսանկարեք։
-            Երբ ծիծաղում ենք,
-            երբ պարում ենք,
-            երբ իրար չենք նկատում,
-            երբ սեղանի շուրջ ինչ-որ հետաքրքիր բան է կատարվում։
+
+            Երբ ծիծաղում ենք։
+            Երբ պարում ենք։
+            Երբ իրար չենք նկատում։
+            Երբ սեղանի շուրջ ինչ-որ բան է կատարվում։
 
             <br><br>
 
-            Մի մտածեք՝ «սա լավ կադր չէ»։
-            Հենց այդ անկեղծ պահերն են հետո
-            դառնում ամենասիրելի հիշողությունները։
+            Եվ ամենակարևորը՝
+            <strong>
+                կիսվեք այդ կադրերով մեզ հետ։
+            </strong>
 
             <br><br>
 
-            Ու եթե կարող եք՝
-            կիսվեք մեզ հետ Ձեր կադրերով։ 📷
+            Մենք ուզում ենք տեսնել
+            մեր հարսանիքը նաև Ձեր աչքերով։
 
         </p>
 
-        <div class="hashtag">
-            #ArmanAndAngelina
+        <div class="secret-key">
+            #ARMANANDANGELINA
         </div>
 
     </div>
@@ -1508,93 +1885,78 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      GALLERY
-===================================================== -->
+========================================================= -->
 
 <section class="gallery">
 
-    <div class="container reveal">
+    <div class="gallery-heading reveal">
 
-        <div class="center">
-
-            <div class="kicker">
-                OUR LITTLE WORLD
-            </div>
-
-            <h2 class="section-title">
-                Մեր պահերը
-            </h2>
-
-            <p class="text">
-                Այստեղ հետո կավելացնենք
-                Ձեր իրական սիրելի լուսանկարները։
-            </p>
-
+        <div class="kicker">
+            OUR WORLD
         </div>
 
+        <h2 class="title">
+            Մեր փոքրիկ աշխարհը
+        </h2>
 
-        <div class="gallery-grid">
+        <div class="line"></div>
 
-            <div class="gallery-item">
+        <p style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:22px;
+            color:#756960;
+        ">
+            Այստեղ հետո կտեղադրենք
+            Արմանի և Անգելինայի իրական լուսանկարները։
+        </p>
 
-                <img
-                    src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=90"
-                    alt="Wedding photo"
-                >
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=90"
-                    alt="Wedding couple"
-                >
-
-            </div>
+    </div>
 
 
-            <div class="gallery-item">
+    <div class="gallery-grid reveal">
 
-                <img
-                    src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=90"
-                    alt="Wedding details"
-                >
+        <div class="gallery-item g1">
+            <img
+                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=95"
+                alt=""
+            >
+        </div>
 
-            </div>
+        <div class="gallery-item g2">
+            <img
+                src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=95"
+                alt=""
+            >
+        </div>
 
+        <div class="gallery-item g3">
+            <img
+                src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1400&q=95"
+                alt=""
+            >
+        </div>
 
-            <div class="gallery-item">
+        <div class="gallery-item g4">
+            <img
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=95"
+                alt=""
+            >
+        </div>
 
-                <img
-                    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=90"
-                    alt="Wedding flowers"
-                >
+        <div class="gallery-item g5">
+            <img
+                src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=95"
+                alt=""
+            >
+        </div>
 
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=90"
-                    alt="Wedding couple"
-                >
-
-            </div>
-
-
-            <div class="gallery-item">
-
-                <img
-                    src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1200&q=90"
-                    alt="Wedding celebration"
-                >
-
-            </div>
-
+        <div class="gallery-item g6">
+            <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=95"
+                alt=""
+            >
         </div>
 
     </div>
@@ -1603,43 +1965,45 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      RSVP
-===================================================== -->
+========================================================= -->
 
 <section class="rsvp">
 
     <div class="container reveal">
 
-        <div class="kicker">
-            WE HOPE TO SEE YOU
+        <div class="kicker" style="color:#cbb18c">
+            RSVP
         </div>
 
-        <h2>
-            Կլինե՞ք մեզ հետ
+        <h2 class="title">
+            Կլինե՞ք մեզ հետ։
         </h2>
 
-        <div class="divider"></div>
+        <div class="line" style="margin-left:auto;margin-right:auto;"></div>
 
         <p>
 
-            Ձեր ներկայությունը մեզ համար
-            ամենագեղեցիկ նվերներից մեկն է։
+            Ձեր ներկայությունը
+            մեր օրվա ամենագեղեցիկ մասն է։
 
             <br><br>
 
             Խնդրում ենք հաստատել Ձեր մասնակցությունը,
-            որպեսզի այդ օրը Ձեզ սպասենք
-            մեր սրտերում ու մեր սեղանի շուրջ։
+            որպեսզի իմանանք՝ ում համար պահենք
+            մեր սեղանի շուրջ ամենաջերմ տեղերը։
 
         </p>
 
-        <!-- Այստեղ հետո կտեղադրենք ձեր իրական Google Form-ի հղումը -->
+        <!--
+            Փոխիր այս URL-ը քո Google Form-ի հղումով։
+        -->
 
         <a
-            class="rsvp-button"
             href="https://forms.google.com/"
             target="_blank"
+            class="rsvp-button"
         >
             ՀԱՍՏԱՏԵԼ ՄԱՍՆԱԿՑՈՒԹՅՈՒՆԸ
         </a>
@@ -1650,89 +2014,88 @@ footer p{
 
 
 
-<!-- =====================================================
+<!-- =========================================================
      FOOTER
-===================================================== -->
+========================================================= -->
 
 <footer>
+
+    <div class="footer-monogram">
+        A&nbsp; A
+    </div>
 
     <h2>
         Արման & Անգելինա
     </h2>
 
-    <p class="footer-date">
+    <p>
         10 · 10 · 2027
     </p>
 
     <p>
-        Սիրով սպասում ենք Ձեզ։ 🤍
+        Սիրով սպասում ենք Ձեզ։
     </p>
 
 </footer>
 
 
 
-<!-- =====================================================
-     MUSIC
-===================================================== -->
+<!-- =========================================================
+     MUSIC BUTTON
+========================================================= -->
 
 <button
-    class="music-button"
+    class="music"
     id="musicButton"
-    onclick="playMusic()"
-    title="Երաժշտություն"
+    onclick="toggleMusic()"
+    aria-label="Music"
 >
     ♪
 </button>
 
-
-<!-- Hidden YouTube player -->
-
 <iframe
-    id="youtubePlayer"
-    width="1"
-    height="1"
-    style="position:absolute;left:-9999px;"
-    src=""
+    id="musicFrame"
+    style="
+        position:fixed;
+        width:1px;
+        height:1px;
+        left:-100px;
+        top:-100px;
+        opacity:0;
+        pointer-events:none;
+    "
     allow="autoplay"
-></iframe>
+>
+</iframe>
 
 
 
 <script>
 
-/* =====================================================
-   OPEN INVITATION
-===================================================== */
+/* =========================================================
+   INTRO
+========================================================= */
 
-function openInvitation(){
+function enterInvitation(){
 
-    const envelope =
-        document.getElementById("envelope");
+    const screen =
+        document.getElementById("introScreen");
 
-    const opening =
-        document.getElementById("opening");
+    screen.classList.add("closed");
 
-    envelope.classList.add("open");
-
-    setTimeout(() => {
-
-        opening.classList.add("hide");
-
-        document.body.style.overflow = "auto";
-
-    },1300);
+    document.body.classList.remove("locked");
 
 }
 
 
-
-/* =====================================================
+/* =========================================================
    COUNTDOWN
-===================================================== */
+========================================================= */
 
 const weddingDate =
-    new Date("October 10, 2027 00:00:00").getTime();
+    new Date(
+        "October 10, 2027 00:00:00"
+    ).getTime();
 
 
 function updateCountdown(){
@@ -1740,64 +2103,69 @@ function updateCountdown(){
     const now =
         new Date().getTime();
 
-    const distance =
+    const difference =
         weddingDate - now;
 
 
-    if(distance <= 0){
+    if(difference <= 0){
 
-        document.getElementById("days").innerText = "♥";
-        document.getElementById("hours").innerText = "♥";
-        document.getElementById("minutes").innerText = "♥";
-        document.getElementById("seconds").innerText = "♥";
+        document.getElementById("days").innerText="♥";
+        document.getElementById("hours").innerText="♥";
+        document.getElementById("minutes").innerText="♥";
+        document.getElementById("seconds").innerText="♥";
 
         return;
-
     }
 
 
     const days =
         Math.floor(
-            distance /
+            difference /
             (1000 * 60 * 60 * 24)
         );
 
 
     const hours =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60 * 24)) /
+            (
+                difference %
+                (1000 * 60 * 60 * 24)
+            ) /
             (1000 * 60 * 60)
         );
 
 
     const minutes =
         Math.floor(
-            (distance %
-            (1000 * 60 * 60)) /
+            (
+                difference %
+                (1000 * 60 * 60)
+            ) /
             (1000 * 60)
         );
 
 
     const seconds =
         Math.floor(
-            (distance %
-            (1000 * 60)) /
+            (
+                difference %
+                (1000 * 60)
+            ) /
             1000
         );
 
 
     document.getElementById("days").innerText =
-        days;
+        String(days).padStart(3,"0");
 
     document.getElementById("hours").innerText =
-        hours;
+        String(hours).padStart(2,"0");
 
     document.getElementById("minutes").innerText =
-        minutes;
+        String(minutes).padStart(2,"0");
 
     document.getElementById("seconds").innerText =
-        seconds;
+        String(seconds).padStart(2,"0");
 
 }
 
@@ -1810,28 +2178,27 @@ setInterval(
 );
 
 
-
-/* =====================================================
-   SCROLL REVEAL
-===================================================== */
+/* =========================================================
+   REVEAL ANIMATIONS
+========================================================= */
 
 const observer =
     new IntersectionObserver(
         entries => {
 
-            entries.forEach(
-                entry => {
+            entries.forEach(entry => {
 
-                    if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-                        entry.target.classList.add(
-                            "visible"
-                        );
+                    entry.target.classList.add("show");
 
-                    }
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 }
-            );
+
+            });
 
         },
         {
@@ -1842,30 +2209,25 @@ const observer =
 
 document
     .querySelectorAll(".reveal")
-    .forEach(
-        element =>
-            observer.observe(element)
-    );
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
 
 
-
-/* =====================================================
+/* =========================================================
    MUSIC
-
-   YouTube video ID:
-   xTvyyoF_LZY
-
-   Opens official video in a hidden player.
-===================================================== */
+========================================================= */
 
 let musicPlaying = false;
 
 
-function playMusic(){
+function toggleMusic(){
 
-    const player =
+    const frame =
         document.getElementById(
-            "youtubePlayer"
+            "musicFrame"
         );
 
     const button =
@@ -1876,40 +2238,28 @@ function playMusic(){
 
     if(!musicPlaying){
 
-        player.src =
+        frame.src =
             "https://www.youtube.com/embed/xTvyyoF_LZY?autoplay=1&loop=1&playlist=xTvyyoF_LZY";
 
-        button.innerHTML = "❚❚";
+        button.innerHTML="Ⅱ";
 
-        button.classList.add(
-            "playing"
-        );
+        button.classList.add("active");
 
-        musicPlaying = true;
+        musicPlaying=true;
 
     }else{
 
-        player.src = "";
+        frame.src="";
 
-        button.innerHTML = "♪";
+        button.innerHTML="♪";
 
-        button.classList.remove(
-            "playing"
-        );
+        button.classList.remove("active");
 
-        musicPlaying = false;
+        musicPlaying=false;
 
     }
 
 }
-
-
-
-/* =====================================================
-   START WITH NO SCROLL
-===================================================== */
-
-document.body.style.overflow = "hidden";
 
 </script>
 
